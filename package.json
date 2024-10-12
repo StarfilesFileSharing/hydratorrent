@@ -1,0 +1,14 @@
+{
+  "name": "hydratorrent",
+  "version": "0.1",
+  "description": "Hydrafiles+WebTorrent Integration",
+  "main": "index.js",
+  "repository": "https://github.com/StarfilesFileSharing/HydraTorrent.git",
+  "author": "Parsa Yazdani (Quix) <parsa@yazdani.au>",
+  "license": "Unlicense",
+  "dependencies": {
+    "hydrafiles": "https://github.com/StarfilesFileSharing/Hydrafiles",
+    "webtorrent": "^2.5.1"
+  },
+  "type": "module"
+}
