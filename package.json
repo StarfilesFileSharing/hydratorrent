@@ -7,7 +7,7 @@
   "author": "Parsa Yazdani (Quix) <parsa@yazdani.au>",
   "license": "Unlicense",
   "dependencies": {
-    "hydrafiles": "https://github.com/StarfilesFileSharing/Hydrafiles",
+    "hydrafiles": "git+https://github.com/StarfilesFileSharing/Hydrafiles.git",
     "webtorrent": "^2.5.1"
   },
   "type": "module"

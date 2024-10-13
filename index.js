@@ -41,4 +41,8 @@ class HydraTorrent extends WebTorrent {
             onseed(torrent)
         })
     }
+
+    async search (where, cache) {
+        await this.HydraTorrent.search(where, cache)
+    }
 }

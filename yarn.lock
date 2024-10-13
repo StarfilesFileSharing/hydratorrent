@@ -1918,9 +1918,9 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-"hydrafiles@https://github.com/StarfilesFileSharing/Hydrafiles":
+"hydrafiles@git+https://github.com/StarfilesFileSharing/Hydrafiles.git":
   version "0.1.0"
-  resolved "https://github.com/StarfilesFileSharing/Hydrafiles#99acc0d0cb511321a5b48e554601bb238d7842c9"
+  resolved "git+https://github.com/StarfilesFileSharing/Hydrafiles.git#be7e768fa865ce1ecde5a3fcc9ffccb746de5b9c"
   dependencies:
     "@aws-sdk/client-s3" "^3.591.0"
     formidable "^3.5.1"
