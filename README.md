@@ -66,12 +66,13 @@ const files = await client.search({ where: { name: 'i-am-spartacus-its-me.gif' }
 - Creates `new Hydrafiles()`
 
 ### client.add() -> callback()
-- Runs `hydrafiles.nodes.getNodes()` and adds all nodes as webseeds
+- Runs `hydrafiles.nodes.getNodes()` and adds all nodes as webseeds using `torrent.addWebSeed()`
+- Runs `hydrafiles.search()` to find all SHA256 files for infohash and adds all nodes as webseeds using `torrent.addWebSeed()`
+- Runs `hydrafiles.search()` to find all infohashes for SHA256 and adds all nodes as webseeds using `torrent.addWebSeed()`
 
 Planned:
-- Check for SHA256 in Hydrafiles and try download that
-- Find other infohashes for SHA256 and add those
+- Run `hydrafiles.FileHandler.getFile()` and pipe to torrent to eventually remove `torrent.addWebSeed()` hook calls (and move `hydrafiles.search()` logic to Hydrafiles lib)
 
 ### client.seed()
 Planned:
-- Pass file to Hydrafiles & seed
+- Run `hydrafiles.FileHandler.cacheFile()`

@@ -19,10 +19,22 @@ class HydraTorrent extends WebTorrent {
      * @param {function=} ontorrent called when the torrent is ready (has metadata)
      */
     add (torrentId, opts = {}, ontorrent = () => {}) {
-        super.add(torrentId, opts, (torrent) => {
-            const webseeds = client.Hydrafiles.nodes.getNodes({ includeSelf: false }).map((node => `${node.host}/infohash/${torrent.infoHash}`))
+        super.add(torrentId, opts, async (torrent) => {
+            const nodes = client.Hydrafiles.nodes.getNodes({ includeSelf: false })
+            const webseeds = nodes.map((node => `${node.host}/infohash/${torrent.infoHash}`))
             for (let i = 0; i < webseeds.length; i++) {
                 torrent.addWebSeed(webseeds)
+            }
+            let files = await this.search({ where: { infohash: torrent.infoHash } }, false)
+            for (let i = 0; i < files.length; i++) {
+                files = [...files, await this.search({ where: { hash: files[i].hash } }, false)]
+            }
+            for (let i = 0; i < files.length; i++) {
+                const file = await this.Hydrafiles.FileHandler.init(files[0], this.Hydrafiles)
+                const webseeds = [...nodes.map((node => `${node.host}/sha256/${file.hash}`)), ...nodes.map((node => `${node.host}/infohash/${file.infohash}`))]
+                for (let i = 0; i < webseeds.length; i++) {
+                    torrent.addWebSeed(webseeds[i])
+                }
             }
             ontorrent(torrent)
         })
