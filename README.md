@@ -55,10 +55,10 @@ const client = new HydraTorrent()
 console.log(client.Hydrafiles === undefined) // false
 ```
 
-### Planned
+### Search Method
 ```js
 const client = new HydraTorrent()
-const torrents = client.search()
+const files = client.search({ where: { name: 'i-am-spartacus-its-me.gif' } })
 ```
 
 ## Hooks
